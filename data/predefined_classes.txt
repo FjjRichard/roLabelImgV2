@@ -1,0 +1,7 @@
+ship
+plane
+dog
+person
+cat
+tv
+car
