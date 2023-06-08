@@ -1,4 +1,5 @@
 HISTORY.rst
+LICENSE
 MANIFEST.in
 README.rst
 __init__.py
@@ -13,6 +14,7 @@ setup.py
 ./libs/__init__.py
 ./libs/canvas.py
 ./libs/colorDialog.py
+./libs/convertCoco.py
 ./libs/labelDialog.py
 ./libs/labelFile.py
 ./libs/lib.py
@@ -68,6 +70,7 @@ labelImg.egg-info/top_level.txt
 libs/__init__.py
 libs/canvas.py
 libs/colorDialog.py
+libs/convertCoco.py
 libs/labelDialog.py
 libs/labelFile.py
 libs/lib.py

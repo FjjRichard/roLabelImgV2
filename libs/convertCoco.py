@@ -62,6 +62,9 @@ class ConvertCoCo(object):
         """
 
         xml_f_list = list(glob.glob(self.savedir+"/*.xml"))
+        if not xml_f_list:
+
+            xml_f_list = list(glob.glob(self.imgdir+"/*.xml"))
 
         xml_f_dict = self.split_data(xml_f_list,ratio)
         ID_dict = {'train':list(range(0,len(xml_f_dict['train']))),'valid':list(range(len(xml_f_dict['train']),len(xml_f_dict['train'])+len(xml_f_dict['valid'])))}
