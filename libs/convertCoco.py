@@ -64,19 +64,22 @@ class ConvertCoCo(object):
         xml_f_list = list(glob.glob(self.savedir+"/*.xml"))
 
         xml_f_dict = self.split_data(xml_f_list,ratio)
+        ID_dict = {'train':list(range(0,len(xml_f_dict['train']))),'valid':list(range(len(xml_f_dict['train']),len(xml_f_dict['train'])+len(xml_f_dict['valid'])))}
+
         for key,data in xml_f_dict.items():
             if data:
                 json_dict = {"images":[], "type": "instances", "annotations": [],
                             "categories": []}
                 categories = {}
                 bnd_id = self.START_BOUNDING_BOX_ID
-                annotations_dir = os.path.join(os.path.dirname(self.imgdir),"annotations")#创建保存json文件的文件夹
-                images_dir = os.path.join(os.path.dirname(self.imgdir),"images")#创建保存图像文件的文件夹
+
+                annotations_dir = os.path.join(self.savedir,"annotations")#创建保存json文件的文件夹
+                images_dir = os.path.join(self.savedir,"images")#创建保存图像文件的文件夹
                 self.create_dir(annotations_dir)
                 self.create_dir(images_dir)
                 save_json_path = os.path.join(annotations_dir,key+'.json')#创建保存json文件
-                
-                for xml_f in data:
+
+                for index, xml_f in enumerate(data) :
                     base_name = os.path.basename(xml_f).split('.')[0]
                     scr_img_path = glob.glob(os.path.join(self.imgdir,base_name)+'.*')
                     scr_img_path  = scr_img_path[0]
@@ -93,7 +96,8 @@ class ConvertCoCo(object):
                     else:
                         raise NotImplementedError('%d paths found in %s'%(len(img_path), img_path))
                     ## The filename must be a number
-                    image_id = self.get_filename_as_int(filename)
+                    # image_id = self.get_filename_as_int(filename)
+                    image_id = int(ID_dict[key][index])
                     size = self.get_and_check(root, 'size', 1)
                     width = int(self.get_and_check(size, 'width', 1).text)
                     height = int(self.get_and_check(size, 'height', 1).text)

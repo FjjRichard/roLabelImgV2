@@ -632,8 +632,8 @@ class MainWindow(QMainWindow, WindowMixin):
         if self.defaultSaveDir is not None and len(ustr(self.defaultSaveDir)):
             if self.filePath:
 
-                print(self.lastOpenDir)
-                print(self.defaultSaveDir)
+
+                # print(self.defaultSaveDir)
                 
                 convert = ConvertCoCo(self.lastOpenDir,self.defaultSaveDir)
                 convert.convert(self.sl.value()/100.0)
@@ -1350,7 +1350,6 @@ class MainWindow(QMainWindow, WindowMixin):
         if os.path.exists(predefClassesFile) is True:
         
             with open(predefClassesFile, 'r', encoding='utf-8') as f:
-                print("fe")
                 for line in f:
                     line = line.strip()
                     if self.labelHist is None:
