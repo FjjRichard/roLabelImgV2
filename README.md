@@ -12,6 +12,8 @@ The original version 'roLabelImg''s link is here https://github.com/cgvict/roLab
 
 2. **RoLabelImgV2 adds the function of one-button conversion of COCO format(Xml→Json)**
 
+![image](https://github.com/richarddddd198/roLabelImgV2/blob/main/gui.PNG)
+
 ### 3.How to use
 
 1. Refer to the introduction document of roLabelImg
